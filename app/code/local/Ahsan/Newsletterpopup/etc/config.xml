@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ahsan_Newsletterpopup>
+            <version>1.3.1</version>
+        </Ahsan_Newsletterpopup>
+    </modules>
+
+    <frontend>
+        <routers>
+            <newsletter>
+                <args>
+                    <modules>
+                        <Ahsan_Newsletterpopup before="Mage_Newsletter">Ahsan_Newsletterpopup</Ahsan_Newsletterpopup>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers>
+
+        <layout>
+            <updates>
+                <newsletterpopup>
+                    <file>newsletterpopup.xml</file>
+                </newsletterpopup>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Ahsan_Newsletterpopup>
+                    <files>
+                        <default>Ahsan_Newsletterpopup.csv</default>
+                    </files>
+                </Ahsan_Newsletterpopup>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Ahsan_Newsletterpopup>
+                    <files>
+                        <default>Ahsan_Adminhtml_Newsletterpopup.csv</default>
+                    </files>
+                </Ahsan_Newsletterpopup>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <global>
+        <blocks>
+            <newsletterpopup>
+                <class>Ahsan_Newsletterpopup_Block</class>
+            </newsletterpopup>
+        </blocks>
+
+        <helpers>
+            <newsletterpopup>
+                <class>Ahsan_Newsletterpopup_Helper</class>
+            </newsletterpopup>
+        </helpers>
+
+        <models>
+            <newsletterpopup>
+                <class>Ahsan_Newsletterpopup_Model</class>
+            </newsletterpopup>
+        </models>
+
+    </global>
+
+    <default>
+        <newsletter>
+            <general>
+                <isactive>0</isactive>
+                <cookielifetime>999</cookielifetime>
+                <cookiename>es_newsletterpopup</cookiename>
+                <theme>default</theme>
+                <firsttitle>firsttitle</firsttitle>
+                <secondtitle>secondtitle</secondtitle>
+                <message>General Message.</message>
+            </general>
+        </newsletter>
+    </default>
+</config>

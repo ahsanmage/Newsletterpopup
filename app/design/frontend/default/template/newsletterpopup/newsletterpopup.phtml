@@ -1,0 +1,96 @@
+<?php
+if ($this->isActivePopUp()):
+    ?>
+    <script type="text/javascript">
+        <?php if (is_numeric($this->getCookieLifeTime())): ?>
+        EsNewsSubscribers.setCookieLiveTime(<?php echo $this->getCookieLifeTime(); ?>);
+        <?php endif; ?>
+        <?php if ($this->getCookieName()): ?>
+        EsNewsSubscribers.setCookieName('<?php echo $this->getCookieName(); ?>');
+        <?php endif; ?>
+        EsNewsSubscribers.setBaseUrl('<?php echo $this->getBaseUrl(); ?>');
+
+        function setGender(gender)
+        {
+            jQuery('#esns_gender').val(gender);
+        }
+    </script>
+    <div id="esns_background_layer">
+        <?php if ($this->getTheme() == 'default'): ?>
+            <div id="esns_box_layer">
+                <div id="esns_box_close"><i class="fa fa-close"></i></div>
+                <div id="esns_box_title">
+                    <?php if ($this->getFirstTitle()): ?>
+                        <div id="esns_box_block_1">
+                            <?php echo $this->getFirstTitle() ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($this->getSecondTitle()): ?>
+                        <div id="esns_box_block_2">
+                            <?php echo $this->getSecondTitle() ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <div id="esns_box_subscribe_response_error"></div>
+                <div id="esns_box_subscribe">
+                    <div id="esns_box_subscribe_response_success"></div>
+                    <div id="esns_box_subscribe_form">
+                        <div id="esns_box_subscribe_input">
+                            <input id="esns_email" name="subscribe_email" placeholder="<?php echo $this->__('Enter your email address'); ?>" type="text">
+                            <input type="radio" name="gender" value="1" checked><?php echo $this->__('Mens') ?>
+                            <input type="radio" name="gender" value="2"><?php echo $this->__('Womens') ?>
+
+                        </div>
+                        <div id="esns_box_subscribe_submit">
+                            <a href="javascript:void(0)" id="esns_submit" ><?php echo $this->__('Sign Up'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php elseif($this->getTheme() == 'label'): ?>
+            <div id="esns_box_layer" class="tl">
+                <div id="esns_box_close"><i class="fa fa-close"></i></div>
+
+
+                <div id="esns_box_block_1">
+                    <?php echo $this->getFirstTitle() ?>
+                </div>
+
+
+                <div id="esns_box_block_2">
+                    <?php echo $this->getSecondTitle() ?>
+                </div>
+
+
+
+                <div id="esns_box_block_3">
+                    <?php echo $this->getText() ?>
+                </div>
+
+                <div id="esns_box_subscribe">
+                    <div id="esns_box_subscribe_response_error"></div>
+                    <div id="esns_box_subscribe_response_success"></div>
+                    <div id="esns_box_subscribe_form">
+                        <div id="esns_box_subscribe_input"><input id="esns_email" name="subscribe_email" placeholder="<?php echo $this->__('Email'); ?>" type="text">
+                            <input type="radio" name="gender" value="1" onclick="setGender(1);" /><?php echo $this->__('Mens') ?>
+                            <input type="radio" name="gender" value="2" onclick="setGender(2);" /><?php echo $this->__('Womens') ?>
+
+                        </div>
+                        <div id="esns_box_subscribe_submit">
+                            <input type="hidden" name="gender" id="gender" class="input-text validate-not-empty" />
+                            <a href="javascript:void(0)" id="esns_submit" ><?php echo $this->__('Subscribe'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#esns_box_block_2').html(function (i, html) {
+            return html.replace(/(\d+%+\s\w+)/, '<span class="discount-text">$1</span>')
+        });
+    });
+</script>

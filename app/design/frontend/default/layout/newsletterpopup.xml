@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+	<reference name="head">		
+		<action method="addItem"><type>skin_css</type><name>css/style-newsletterpopup.css</name><params/></action>
+        
+        <action method="addJs"><script>newsletterpopup/script.js</script></action>
+	</reference>
+    <reference name="after_body_start">
+        <block type="newsletterpopup/newsletterpopup" name="newsletterpopup" template="newsletterpopup/newsletterpopup.phtml" />
+    </reference>
+  </default>
+</layout>
